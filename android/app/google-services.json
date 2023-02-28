@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "194238162263",
+    "project_id": "patrick-golf-fun",
+    "storage_bucket": "patrick-golf-fun.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194238162263:android:23f08a6df253d0e2ac0a12",
+        "android_client_info": {
+          "package_name": "com.example.golf_management_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194238162263-ps33b9kcsdqju2dvqdboqjg89u1gcv27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP4ns2pIzZ_IYHUe5hUA6lqUg2f7-R2BI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194238162263-ps33b9kcsdqju2dvqdboqjg89u1gcv27.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
