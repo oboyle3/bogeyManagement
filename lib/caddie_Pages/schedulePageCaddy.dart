@@ -19,7 +19,7 @@ class schedulePageCaddy extends StatelessWidget {
       appBar: AppBar(
         title: Text('caddy schedule'),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 84, 76, 175),
       ),
       body: Form(
         child: Column(

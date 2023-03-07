@@ -17,7 +17,7 @@ class _HomeScreenMemberState extends State<HomeScreenMember> {
     drawer: NavigationDrawerWidgetMember(),
 
           appBar: AppBar(
-        title: Text("Bogey Managementfor Members"),
+        title: Text("Bogey Management for Members"),
       )
     );
 }

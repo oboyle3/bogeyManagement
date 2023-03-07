@@ -1,12 +1,14 @@
-// ignore: unused_import
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:golf_management_app/start_pages/widget_tree.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:golf_management_app/screens/signin_screen.dart';
 import 'package:flutter/widgets.dart';
 
+//
+
 void main() async {
- // WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const SignInScreen(),
+      home: WidgetTree(), //was const  3/7/2023 home: SignInScreen(),
     );
   }
 }

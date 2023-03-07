@@ -1,34 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:intl/intl.dart';
 
-class HistoryPageMember extends StatefulWidget {
-  const HistoryPageMember({super.key});
-
+class HistoryPageMember extends StatelessWidget {
   @override
-  State<HistoryPageMember> createState() => _HistoryPageMemberState();
-}
+  Widget build(BuildContext context) {
+    final DateFormat formatter = DateFormat('EEEE, MMMM d');
 
-class _HistoryPageMemberState extends State<HistoryPageMember> {
- @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar:AppBar(  
-      title: Text('member history'),
-      centerTitle:true,
-      backgroundColor: Colors.green,
-    ),
-    body: Container(
-      padding: EdgeInsets.all(16.0),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('schedule'),
+      ),
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           
-            SizedBox(height: 16.0),
-            Text("history page", style: TextStyle(fontSize: 24.0)),
-            
+            Text(
+              formatter.format(DateTime.now()),
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // add your code here
+              },
+              child: Text('Button 1'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // add your code here
+              },
+              child: Text('Button 2'),
+            ),
           ],
         ),
       ),
-        // User profile content here
-  );
+    );
+  }
 }
+      
+
+/* child: Text(
+          formatter.format(DateTime.now()),
+        ), */

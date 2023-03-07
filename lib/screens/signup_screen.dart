@@ -46,7 +46,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Padding(
                   padding: EdgeInsets.fromLTRB(
                       20, MediaQuery.of(context).size.height * 0.2, 20, 0),
-                  child: Column(children: <Widget>[
+                  child: Column(
+                    
+                    children: <Widget>[
                     const SizedBox(
                       height: 20,
                     ),
@@ -62,30 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     reusableTextField("email", Icons.beach_access, false,
                         _emailTextController),
-                    /*
-                    CheckboxListTile(
-                      title: Text('Please check if you are a Caddie'),
-                      value: isCaddieChecked,
-                     onChanged: (value) {
-                setState(() {
-                  isCaddieChecked = value ?? false;
-                });
-              },
-                    ),
-                    CheckboxListTile(
-                      title: Text('Please check if you are a Member'),
-                      value: isMemberChecked,
-                     onChanged: (value) {
-                setState(() {
-                  isCaddieChecked = value ?? false;
-                });
-              },
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    */
-                    //HERE
+                   
                     
                     signInSignUpButton(context, false, () {
                       Navigator.push(
@@ -94,32 +73,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               builder: (context) => ChooseRoleScreen()));
                     }),
                     
-                    //
-                    //NOW NOW
-                    /*
-                    SizedBox(height: 16.0),
-                    ElevatedButton(
-              child: Text('Next'),
-              onPressed: () {
-                if (isCaddieChecked) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                } else if (isMemberChecked) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );}
-                  else {
-                  // Display an error message or do nothing.
-                }
-              },
-                    )
-
-                  */
-                    //
-                  ])))),
+                   
+                  ])
+                  
+                  ))
+                  ),
     );
   }
   //
