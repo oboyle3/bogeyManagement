@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:golf_management_app/start_pages/auth.dart';
 
+import '../utils/colors_utils.dart';
+
 class HomeP extends StatelessWidget {
   HomeP({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class HomeP extends StatelessWidget {
   }
 
   Widget _title() {
-    return const Text('firebase auth');
+    return const Text('home');
   }
 
   Widget _UserUid() {
@@ -36,6 +38,8 @@ class HomeP extends StatelessWidget {
             height: double.infinity,
             width: double.infinity,
             padding: const EdgeInsets.all(20),
+            //
+            
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
