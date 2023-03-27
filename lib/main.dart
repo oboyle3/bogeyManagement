@@ -1,3 +1,5 @@
+import 'package:golf_management_app/start_pages/new_login.dart';
+import 'package:golf_management_app/start_pages/new_main_page.dart';
 import 'package:golf_management_app/start_pages/widget_tree.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: WidgetTree(), //was const  3/7/2023 home: SignInScreen(),
+      home: const NewMainPage(), //was const  3/7/2023 home: SignInScreen(),
     );
   }
 }
