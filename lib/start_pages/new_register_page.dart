@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NewRegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -14,18 +15,41 @@ class NewRegisterPage extends StatefulWidget {
 class _NewRegisterPageState extends State<NewRegisterPage> {
   final _controllerEmail = TextEditingController();
   final _controllerPassword = TextEditingController();
+  final _controllerFirstName = TextEditingController();
+  final _controllerLastName = TextEditingController();
+  final _controllerAge = TextEditingController();
 
   @override
   void dispose() {
     _controllerEmail.dispose();
     _controllerPassword.dispose();
+    _controllerFirstName.dispose();
+    _controllerLastName.dispose();
+    _controllerAge.dispose();
     super.dispose();
   }
 
   Future signUp() async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _controllerEmail.text.trim(),
-       password: _controllerPassword.text.trim());
+        password: _controllerPassword.text.trim());
+
+       addUserDetails(
+      _controllerFirstName.text.trim(),
+      _controllerLastName.text.trim(),
+      _controllerEmail.text.trim(),
+      int.parse(_controllerAge.text.trim()),
+    );
+  }
+
+  Future addUserDetails(
+      String firstName, String lastName, String email, int age) async {
+         await FirebaseFirestore.instance.collection('users').add({
+          'first name': firstName,
+          'last name': lastName,
+          'email': email,
+          'age': age
+    });
   }
 
   @override
@@ -38,23 +62,17 @@ class _NewRegisterPageState extends State<NewRegisterPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.sports_golf_outlined,
-                size: 100,
-              ),
-              SizedBox(height: 50),
-
               Text('Bogey Management Register Page',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                   )),
-              SizedBox(height: 50),
+              SizedBox(height: 10),
               Text('Register below',
                   style: TextStyle(
                     fontSize: 24,
                   )),
-              SizedBox(height: 50),
+              SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
@@ -88,6 +106,69 @@ class _NewRegisterPageState extends State<NewRegisterPage> {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: '  Password',
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              //first name
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue[50],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: TextField(
+                    controller: _controllerFirstName,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: '  first name',
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              //last name
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue[50],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: TextField(
+                    controller: _controllerLastName,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: '  last name',
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              //age
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue[50],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: TextField(
+                    controller: _controllerAge,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: '  age',
                     ),
                   ),
                 ),
