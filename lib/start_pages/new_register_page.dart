@@ -18,6 +18,7 @@ class _NewRegisterPageState extends State<NewRegisterPage> {
   final _controllerFirstName = TextEditingController();
   final _controllerLastName = TextEditingController();
   final _controllerAge = TextEditingController();
+  final _controllerRole = TextEditingController();
 
   @override
   void dispose() {
@@ -26,6 +27,7 @@ class _NewRegisterPageState extends State<NewRegisterPage> {
     _controllerFirstName.dispose();
     _controllerLastName.dispose();
     _controllerAge.dispose();
+    _controllerRole.dispose();
     super.dispose();
   }
 
@@ -34,21 +36,24 @@ class _NewRegisterPageState extends State<NewRegisterPage> {
         email: _controllerEmail.text.trim(),
         password: _controllerPassword.text.trim());
 
-       addUserDetails(
+    addUserDetails(
       _controllerFirstName.text.trim(),
       _controllerLastName.text.trim(),
       _controllerEmail.text.trim(),
       int.parse(_controllerAge.text.trim()),
+      _controllerRole.text.trim()
+
     );
   }
 
   Future addUserDetails(
-      String firstName, String lastName, String email, int age) async {
-         await FirebaseFirestore.instance.collection('users').add({
-          'first name': firstName,
-          'last name': lastName,
-          'email': email,
-          'age': age
+      String firstName, String lastName, String email, int age, String role) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'first name': firstName,
+      'last name': lastName,
+      'email': email,
+      'age': age,
+      'role': role
     });
   }
 
@@ -194,6 +199,28 @@ class _NewRegisterPageState extends State<NewRegisterPage> {
                             fontWeight: FontWeight.bold,
                             fontSize: 18),
                       ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+
+              //role
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue[50],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: TextField(
+                    controller: _controllerRole,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: '  enter caddie or member',
                     ),
                   ),
                 ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -6,19 +7,35 @@ import 'package:golf_management_app/resuable_widgets/navigation_drawer_widget.da
 //import 'package:golf_management_app/screens/signin_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) => Scaffold(
     drawer: NavigationDrawerWidget(),
 
           appBar: AppBar(
         title: Text("Bogey Management Main Page for Caddies"),
+      ),
+      
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+        Text('signed in as   ' + user.email!),
+        MaterialButton(onPressed: () {
+          FirebaseAuth.instance.signOut();
+        },
+        color: Colors.deepPurple,
+        child: Text('sign out'),
+        ),
+      ],
+      ),
       )
     );
 }
