@@ -1,13 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../caddie_Pages/home_screen.dart';
+import '../member_Pages/home_screen_member.dart';
+
 class NewLoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
-  const NewLoginPage({super.key, required this.showRegisterPage});
+ NewLoginPage({super.key, required this.showRegisterPage});
 
   @override
   State<NewLoginPage> createState() => _NewLoginPageState();
@@ -17,12 +21,16 @@ class _NewLoginPageState extends State<NewLoginPage> {
   final _controllerEmail = TextEditingController();
   final _controllerPassword = TextEditingController();
 
-  Future signIn() async {
+  Future signIn() async {//was futire
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _controllerEmail.text.trim(),
         password: _controllerPassword.text.trim());
+    
   }
 
+//enter test code>
+
+//
   @override
   void dispose() {
     _controllerEmail.dispose();
@@ -56,7 +64,7 @@ class _NewLoginPageState extends State<NewLoginPage> {
                   style: TextStyle(
                     fontSize: 24,
                   )),
-                  SizedBox(height: 50),
+              SizedBox(height: 50),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
@@ -142,4 +150,6 @@ class _NewLoginPageState extends State<NewLoginPage> {
       )),
     );
   }
+
+ 
 }

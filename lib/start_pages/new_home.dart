@@ -25,9 +25,11 @@ class _NewHomePageState extends State<NewHomePage> {
         },
         color: Colors.deepPurple,
         child: Text('sign out'),
-        )
+        ),
+        Text('hello')
       ],
-      //Text('signed in')));
+      
     )));
   }
 }
+

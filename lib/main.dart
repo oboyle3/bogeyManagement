@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: const NewMainPage(), //was const  3/7/2023 home: SignInScreen(),
+      home:  NewMainPage(), //was const  3/7/2023 home: SignInScreen(),
     );
   }
 }
