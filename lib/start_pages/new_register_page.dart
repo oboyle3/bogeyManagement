@@ -41,15 +41,15 @@ class _NewRegisterPageState extends State<NewRegisterPage> {
       _controllerLastName.text.trim(),
       _controllerEmail.text.trim(),
       int.parse(_controllerAge.text.trim()),
-      _controllerRole.text.trim()
+      _controllerRole.text
 
     );
   }
 
-  Future addUserDetails(
+  Future addUserDetails (
       String firstName, String lastName, String email, int age, String role) async {
     await FirebaseFirestore.instance.collection('users').add({
-      'first name': firstName,
+      "first name": firstName,
       'last name': lastName,
       'email': email,
       'age': age,

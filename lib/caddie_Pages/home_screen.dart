@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     drawer: NavigationDrawerWidget(),
 
           appBar: AppBar(
-        title: Text("Bogey Management Main Page for Caddies"),
+        title: Text(" Main Page for Caddies"),
       ),
       
       body: Center(

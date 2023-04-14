@@ -1,17 +1,13 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../caddie_Pages/home_screen.dart';
 import '../member_Pages/home_screen_member.dart';
 
 class NewLoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
- NewLoginPage({super.key, required this.showRegisterPage});
+  const NewLoginPage({super.key, required this.showRegisterPage});
 
   @override
   State<NewLoginPage> createState() => _NewLoginPageState();
@@ -20,21 +16,36 @@ class NewLoginPage extends StatefulWidget {
 class _NewLoginPageState extends State<NewLoginPage> {
   final _controllerEmail = TextEditingController();
   final _controllerPassword = TextEditingController();
+  //adding this
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final dbRef =
+      FirebaseFirestore.instance.collection("users"); //modified problem
 
   Future signIn() async {//was futire
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _controllerEmail.text.trim(),
         password: _controllerPassword.text.trim());
+        /*
+        return FutureBuilder<DocumentSnapshot>(
+        builder: ((context,snapshot){
+          if(snapshot.connectionState == ConnectionState.done){
+            Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+          }
+          return Text("oh no");
+        }),
+
+  */
     
   }
+  
 
-//enter test code>
+  
 
-//
   @override
   void dispose() {
     _controllerEmail.dispose();
     _controllerPassword.dispose();
+
     super.dispose();
   }
 
@@ -150,6 +161,4 @@ class _NewLoginPageState extends State<NewLoginPage> {
       )),
     );
   }
-
- 
 }
