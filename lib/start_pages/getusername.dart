@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class GetUserName extends StatelessWidget {
     if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.hasData && snapshot.data != null) {
         Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-        return Text('first name: ${data["first name"]}');
+        return Text(' ${data["first name"]}' +' ${data["last name"]}' + ' ${data["role"]}'  );
+        
       } else {
         return Text('no data found');
       }
@@ -30,5 +32,15 @@ class GetUserName extends StatelessWidget {
 
     
   }
+
+
+
+  //
+  //
+
+
+
 }
+
+
 //  Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;

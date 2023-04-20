@@ -1,10 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 import 'getusername.dart';
+
+
+
 
 class NewHomePage extends StatefulWidget {
   const NewHomePage({super.key});
@@ -14,22 +18,27 @@ class NewHomePage extends StatefulWidget {
 }
 
 class _NewHomePageState extends State<NewHomePage> {
+  late String myEmail;
   final user = FirebaseAuth.instance.currentUser!;
 
   //get docids
-  List<String> docIDs = [];
+  List<String> docIDs = [];     
+  
+  
+  //works
   //get docIDs
   Future getDocId() async {
     await FirebaseFirestore.instance
         .collection('users')
         .get()
+        
         .then((snapshot) => snapshot.docs.forEach((document) {
-              print(document.reference);
+              //print(document.reference);
               docIDs.add(document.reference.id);
             }));
   }
-
-  //
+  //works
+  
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +68,8 @@ class _NewHomePageState extends State<NewHomePage> {
           color: Colors.deepPurple,
           child: Text('sign out'),
         ),
+        
+        //works
         Expanded(
             child: FutureBuilder(
                 future: getDocId(),
@@ -68,25 +79,23 @@ class _NewHomePageState extends State<NewHomePage> {
                     itemBuilder: (context, index) {
                       return ListTile(
                         //title: Text(docIDs[index]),
-                        title: GetUserName(documentID: docIDs[1]),
+                        title: GetUserName(documentID: docIDs[index]),
                       );
                     },
                   );
-                }))
+                }
+              )
+            )
+          //works
+        
+       
 
-        //Text('hello')
       ],
     )));
   }
+
 }
 
 
-/* good code
-Future<void> getUserRole() async {
-    final userDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
-    setState(() {
-      role = userDoc.get('role');
-    });
-  }
+ 
 
-*/
