@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:golf_management_app/start_pages/auth.dart';
+import 'package:golf_management_app/start_pages/test.dart';
 //import 'package:golf_management_app/start_pages/login_register_page.dart';
 
 //import 'homep.dart';
 import 'new_auth.dart';
-import 'new_home.dart';
+//import 'new_home.dart';
 
 class WidgetTree extends StatefulWidget {
   WidgetTree({Key? key}) : super(key: key);
@@ -21,7 +22,8 @@ class _WidgetTreeState extends State<WidgetTree> {
       stream: Auth().authStateChanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return  NewHomePage();
+          //return  NewHomePage();
+          return TestPage();
         } else {
           return const NewAuthPage(); //should have const
         }

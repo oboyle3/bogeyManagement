@@ -9,7 +9,6 @@ import 'getusername.dart';
 
 
 
-
 class NewHomePage extends StatefulWidget {
   const NewHomePage({super.key});
 
@@ -95,7 +94,4 @@ class _NewHomePageState extends State<NewHomePage> {
   }
 
 }
-
-
- 
 
