@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:golf_management_app/main.dart';
 import 'package:golf_management_app/resuable_widgets/navigation_drawer_widget.dart';
+
+import '../start_pages/getusername.dart';
 //import 'package:golf_management_app/screens/signin_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +28,16 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            CircleAvatar(
+              // display user profile picture here
+              radius: 50,
+            ),
+            SizedBox(height: 16),
+            GetUserName(documentID: "yMjVYMUzAiY7xAe6y5QJ"),
+            // display other user details here
+          ],
+          /*children: [
         Text('signed in as   ' + user.email!),
         MaterialButton(onPressed: () {
           FirebaseAuth.instance.signOut();
@@ -34,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Colors.deepPurple,
         child: Text('sign out'),
         ),
-      ],
+      ],*/
       ),
       )
     );
