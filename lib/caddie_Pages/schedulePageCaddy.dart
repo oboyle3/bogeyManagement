@@ -10,23 +10,21 @@ void updateUserData() {
   
   final userRef = FirebaseFirestore.instance.collection("users").doc("yMjVYMUzAiY7xAe6y5QJ"); 
 
-
   // Get the current user's data
   userRef.get().then((doc) {
     if (doc.exists) {
-      
       List<String> availability = List.from(doc.data()!["date"]);
       DateTime nextDay = DateTime.now().add(Duration(days: 1));
-      String nextDayStr = DateFormat('EEEE').format(nextDay);
+      String nextDayStr = DateFormat('EEEE, d MMMM').format(nextDay);
       availability.add(nextDayStr);
       userRef.update({"date": availability});
     } else {
-      
-      List<String> availability = [DateFormat('EEEE').format(DateTime.now().add(Duration(days: 1)))];
+      List<String> availability = [DateFormat('EEEE, d MMMM').format(DateTime.now().add(Duration(days: 1)))];
       userRef.set({"date": availability});
     }
   });
 }
+
 
 
 //
