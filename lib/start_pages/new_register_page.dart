@@ -73,7 +73,7 @@ class _NewRegisterPageState extends State<NewRegisterPage> {
                     fontSize: 24,
                   )),
               SizedBox(height: 10),
-              Text('Register below',
+              Text('Register bellow',
                   style: TextStyle(
                     fontSize: 24,
                   )),

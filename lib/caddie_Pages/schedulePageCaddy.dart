@@ -1,22 +1,43 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
+//
+void updateUserData() {
+  final currentUser = FirebaseAuth.instance.currentUser!;
+  
+  final userRef = FirebaseFirestore.instance.collection("users").doc("yMjVYMUzAiY7xAe6y5QJ"); 
 
+
+  // Get the current user's data
+  userRef.get().then((doc) {
+    if (doc.exists) {
+      
+      List<String> availability = List.from(doc.data()!["date"]);
+      DateTime nextDay = DateTime.now().add(Duration(days: 1));
+      String nextDayStr = DateFormat('EEEE').format(nextDay);
+      availability.add(nextDayStr);
+      userRef.update({"date": availability});
+    } else {
+      
+      List<String> availability = [DateFormat('EEEE').format(DateTime.now().add(Duration(days: 1)))];
+      userRef.set({"date": availability});
+    }
+  });
+}
+
+
+//
 
 class schedulePageCaddy extends StatelessWidget {
-//
- 
-
-
-
-
-@override
+  @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
+    DateTime now = DateTime.now().add(Duration(days: 1));
     List<String> weekdays = List.generate(
-      7,
-      (index) => DateFormat('EEEE').format(now.add(Duration(days: index))),
+      1,
+      (index) => DateFormat('EEEE').format(now),
     );
 
     return Scaffold(
@@ -48,18 +69,14 @@ class schedulePageCaddy extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            // Handle "AM" button press
+                          updateUserData();
                           },
-                          child: Text('AM'),
+                        child: Text('Yes, available'),
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "PM" button press
-                          },
-                          child: Text('PM'),
-                        ),
+                        
                       ],
                     ),
+                    
                   ],
                 );
               },
@@ -70,4 +87,3 @@ class schedulePageCaddy extends StatelessWidget {
     );
   }
 }
-
